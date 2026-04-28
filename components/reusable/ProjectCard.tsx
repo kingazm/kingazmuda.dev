@@ -14,7 +14,7 @@ export default function ProjectCard({ name, description, link, stack }: Project)
                     ))}
                 </div>
             )}
-            <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
+            <a href={link} target="_blank" rel="noopener noreferrer" className="text-[#4F8EF7] hover:text--blue-700 transition-colors">
                 View Project
             </a>
         </div>
