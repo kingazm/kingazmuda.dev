@@ -13,15 +13,15 @@ export default function Scaffold() {
       <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-24">
         <div className="lg:flex lg:gap-12 justify-between">
 
-          <aside className="hidden lg:block lg:w-[40%]">
-            <div className="sticky top-0 flex h-screen flex-col justify-between py-24">
+          <aside className="lg:block lg:w-[40%]">
+            <div className="sticky top-0 flex flex-col justify-between pt-24">
                 <LeftPanel 
                   personal={personal}
                 />
             </div>
           </aside>
 
-          <main className="lg:w-[50%] lg:pt-24 ml-auto">
+          <main className="lg:w-[50%] lg:pt-24 ml-auto sm:pt-2">
             <RightPanel
               longDescription={personal.longDescription}
               projects={projects}
