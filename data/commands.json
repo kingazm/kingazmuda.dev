@@ -2,12 +2,12 @@
     {
         "command": "help",
         "partial": false,
-        "response": "available commands: whoami, ls, cat, clear"
+        "response": "available commands: whoami, ls, cat, clear, github, linkedin"
     },
     {
         "command": "ls",
         "partial": false,
-        "response": "background.txt  interests.txt"
+        "response": "background.txt  interests.txt  experience.txt  projects.txt"
     },
     {
         "command": "whoami",
@@ -23,6 +23,30 @@
         "command": "cat interests.txt",
         "partial": false,
         "response": "Scalable systems · Meaningful engineering work · Applied Machine Learning"
+    },
+    {
+        "command": "cat experience.txt",
+        "partial": false,
+        "response": "navigating to experience...",
+        "navigate": "experience"
+    },
+    {
+        "command": "cat projects.txt",
+        "partial": false,
+        "response": "navigating to projects...",
+        "navigate": "projects"
+    },
+    {
+        "command": "github",
+        "partial": false,
+        "response": "opening GitHub...",
+        "url": "https://github.com/kingazm"
+    },
+    {
+        "command": "linkedin",
+        "partial": false,
+        "response": "opening LinkedIn...",
+        "url": "https://linkedin.com/in/kingazmuda"
     },
     {
         "command": "sudo",

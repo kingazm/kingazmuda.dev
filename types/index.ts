@@ -37,4 +37,6 @@ export type TerminalCommand = {
   command: string;
   partial: boolean;
   response: string;
+  navigate?: string;
+  url?: string;
 };

@@ -90,6 +90,14 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
                 );
                 if (matched) {
                     setCompleted(prev => [...prev, matched.response]);
+                    if (matched.navigate) {
+                        setTimeout(() => {
+                            document.getElementById(matched.navigate!)?.scrollIntoView({ behavior: "smooth" });
+                        }, 500);
+                    }
+                    if (matched.url) {
+                        setTimeout(() => window.open(matched.url, "_blank"), 500);
+                    }
                 } else if (cmd.startsWith("cat ")) {
                     setCompleted(prev => [...prev, `cat: ${cmd.slice(4)}: No such file or directory`]);
                 } else if (cmd !== "") {
@@ -109,7 +117,7 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
 
     return (
         <div
-            className="hidden lg:block rounded-lg overflow-hidden font-mono text-sm bg-[#080d18] cursor-text outline-none"
+            className="hidden lg:block rounded-lg overflow-hidden font-mono text-sm bg-[#080d18] cursor-text outline-none transition-transform hover:scale-102"
             onClick={() => setActive(true)}
             onBlur={() => setActive(false)}
             tabIndex={0}
