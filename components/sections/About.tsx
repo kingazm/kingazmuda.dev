@@ -31,6 +31,12 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
     const [input, setInput] = useState("");
     const [version, setVersion] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const terminalRef = useRef<HTMLDivElement>(null);
+    const fastForwardRef = useRef(false);
+
+    useEffect(() => {
+        terminalRef.current?.focus();
+    }, []);
 
     useEffect(() => {
         let cancelled = false;
@@ -39,10 +45,17 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
         setCompleted([]);
         setCurrent("");
         setDone(false);
+        fastForwardRef.current = false;
 
         async function run() {
             for (const line of script) {
                 if (cancelled) return;
+                if (fastForwardRef.current) {
+                    const prefix = line.type === "command" ? "> " : "";
+                    const full = line.type === "empty" ? "" : prefix + line.text;
+                    setCompleted(prev => [...prev, full]);
+                    continue;
+                }
                 if (line.type === "empty") {
                     setCompleted(prev => [...prev, ""]);
                     await sleep(LINE_PAUSE / 2);
@@ -53,13 +66,21 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
                 const delay = line.type === "command" ? COMMAND_DELAY : OUTPUT_DELAY;
                 for (let i = 0; i <= full.length; i++) {
                     if (cancelled) return;
+                    if (fastForwardRef.current) {
+                        setCompleted(prev => [...prev, full]);
+                        setCurrent("");
+                        break;
+                    }
                     setCurrent(full.slice(0, i));
                     await sleep(delay);
                 }
-                setCompleted(prev => [...prev, full]);
-                setCurrent("");
-                await sleep(LINE_PAUSE);
+                if (!fastForwardRef.current) {
+                    setCompleted(prev => [...prev, full]);
+                    setCurrent("");
+                    await sleep(LINE_PAUSE);
+                }
             }
+            setCurrent("");
             setDone(true);
         }
 
@@ -78,6 +99,10 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
         const handler = (e: KeyboardEvent) => {
             e.preventDefault();
             if (e.key === "Enter") {
+                if (!done) {
+                    fastForwardRef.current = true;
+                    return;
+                }
                 const cmd = input.trim().toLowerCase();
                 setCompleted(prev => [...prev, `> ${input}`]);
                 if (cmd === "clear") {
@@ -117,8 +142,10 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
 
     return (
         <div
+            ref={terminalRef}
             className="hidden lg:block rounded-lg overflow-hidden font-mono text-sm bg-[#080d18] cursor-text outline-none transition-transform hover:scale-102"
             onClick={() => setActive(true)}
+            onFocus={() => setActive(true)}
             onBlur={() => setActive(false)}
             tabIndex={0}
         >

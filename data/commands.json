@@ -56,6 +56,6 @@
     {
         "command": "cat",
         "partial": true,
-        "response": "cat: missing file operand"
+        "response": "cat: file not recognized"
     }
 ]
