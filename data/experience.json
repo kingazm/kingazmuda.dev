@@ -1,16 +1,9 @@
 [
     {
-        "position": "Position 1",
-        "company": "Company 1",
-        "start": "Start Date 1",
-        "end": "End Date 1",
-        "description": "Description of experience 1."
-    },
-    {
-        "position": "Position 2",
-        "company": "Company 2",
-        "start": "Start Date 2",
-        "end": "End Date 2",
-        "description": "Description of experience 2."
+        "position": "Software Developer Engineer Intern",
+        "company": "Amazon Web Services",
+        "start": "July 2025",
+        "end": "October 2025",
+        "description": "Utilised Java programming, JUnit, Mockito, Object-oriented Programming & cooperation across 4 teams to implement a new data provider for AWS Database Migration Service’s customers worldwide. Improved the time to release new data providers by 60% by creating an automation tool connecting AWS VPC, Lambda, SQS, Event Bridge, ML model from Amazon Bedrock, internal versioning & ticketing systems APIs to allow for custom code generation compliant with company’s standards and clean code principles."
     }
 ]
