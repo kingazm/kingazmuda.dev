@@ -154,6 +154,7 @@ export default function About({ aboutScript }: { aboutScript: TerminalEntry[] })
                 <span className="w-3 h-3 rounded-full bg-yellow-400" />
                 <span className="w-3 h-3 rounded-full bg-green-500" />
                 <span className="ml-2 text-xs text-slate-500">kinga@about ~ %</span>
+                <div className="ml-auto text-xs text-slate-500">(enter to fast-forward)</div>
             </div>
             <div ref={scrollRef} className="p-6 leading-relaxed h-80 overflow-y-auto">
                 {completed.map((line, i) => (
