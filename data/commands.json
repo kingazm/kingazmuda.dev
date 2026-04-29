@@ -1,0 +1,37 @@
+[
+    {
+        "command": "help",
+        "partial": false,
+        "response": "available commands: whoami, ls, cat, clear"
+    },
+    {
+        "command": "ls",
+        "partial": false,
+        "response": "background.txt  interests.txt"
+    },
+    {
+        "command": "whoami",
+        "partial": false,
+        "response": "Fullstack Developer & soon to be Computer Science Grad"
+    },
+    {
+        "command": "cat background.txt",
+        "partial": false,
+        "response": "Hands-on experience with Java and APIs on production cloud systems. Main Coordinator of the 21st SFI Academic IT Festival, combining an engineering background with leadership and community impact to deliver custom software solutions and organize large-scale technical events."
+    },
+    {
+        "command": "cat interests.txt",
+        "partial": false,
+        "response": "Scalable systems · Meaningful engineering work · Applied Machine Learning"
+    },
+    {
+        "command": "sudo",
+        "partial": true,
+        "response": "Permission denied (nice try though)"
+    },
+    {
+        "command": "cat",
+        "partial": true,
+        "response": "cat: missing file operand"
+    }
+]

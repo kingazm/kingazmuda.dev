@@ -32,3 +32,9 @@ export type ExperienceEntry = {
   end: string;
   description: string;
 };
+
+export type TerminalCommand = {
+  command: string;
+  partial: boolean;
+  response: string;
+};
